@@ -1,15 +1,18 @@
 import '~/global.css';
 
 import { DarkTheme, DefaultTheme, Theme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
 import { NAV_THEME } from '~/lib/constants';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { PortalHost } from '@rn-primitives/portal';
 import { ThemeToggle } from '~/components/ThemeToggle';
 import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
+import { X } from '~/lib/icons/X';
+
+
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -29,6 +32,7 @@ export default function RootLayout() {
   const hasMounted = React.useRef(false);
   const { colorScheme, isDarkColorScheme } = useColorScheme();
   const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
+  const router = useRouter();
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
@@ -57,6 +61,14 @@ export default function RootLayout() {
           options={{
             title: 'Starter Base',
             headerRight: () => <ThemeToggle />,
+          }}
+        />
+        <Stack.Screen
+          name='place/[id]'
+          options={{
+            presentation: 'modal',
+            title: 'Place',
+            headerLeft: () => <TouchableOpacity onPress={() => router.dismiss()}><X size={24} /></TouchableOpacity>
           }}
         />
       </Stack>

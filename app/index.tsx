@@ -16,9 +16,10 @@ import { Progress } from '~/components/ui/progress';
 import { Text } from '~/components/ui/text';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { Trap } from '~/components/ui/trap';
+import { X } from '~/lib/icons/X';
 import { Place } from '~/components/ui/place';
-const GITHUB_AVATAR_URI =
-  'https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg';
+import logo from '~/assets/images/pest-control-logo.png';
+
 
 export default function Screen() {
   const [progress, setProgress] = React.useState(78);
@@ -29,17 +30,18 @@ export default function Screen() {
   return (
     <View className='flex-1 justify-center items-center gap-5 p-6 bg-secondary/30'>
       <Trap count={10} />
-      <Place place={{ name: 'Bathroom', trapCount: 4 }} />
+      <X size={24} />
+      <Place place={{ name: 'Bathroom', trapCount: 4, id: '1234' }} />
       <Card className='w-full max-w-sm p-6 rounded-2xl'>
         <CardHeader className='items-center'>
-          <Avatar alt="Rick Sanchez's Avatar" className='w-24 h-24'>
-            <AvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
+          <Avatar alt="Pest Control" className='w-24 h-24'>
+            <AvatarImage source={logo} />
             <AvatarFallback>
               <Text>RS</Text>
             </AvatarFallback>
           </Avatar>
           <View className='p-3' />
-          <CardTitle className='pb-2 text-center'>Rick Sanchez</CardTitle>
+          <CardTitle className='pb-2 text-center'>Pest Control</CardTitle>
           <View className='flex-row'>
             <CardDescription className='text-base font-semibold'>Scientist</CardDescription>
             <Tooltip delayDuration={150}>

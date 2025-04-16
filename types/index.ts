@@ -34,5 +34,9 @@ interface Subroom {
 }
 
 export {
-  Place
+  Place,
+  Building,
+  Floor,
+  Room,
+  Subroom
 }
