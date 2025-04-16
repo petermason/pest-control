@@ -21,10 +21,10 @@ const Place = React.forwardRef<React.ElementRef<typeof TouchableOpacity>, PlaceP
       <Link href={`/place/${place.id}`} asChild>
         <TouchableOpacity
           ref={ref}
-          className={cn('flex-row items-center justify-between p-4', className)}
+          className={cn('flex-row items-center justify-between p-2 pt-3 border-b-hairline', className)}
           {...props}
       >
-        <Text className="text-foreground text-base font-medium">{place.name}</Text>
+        <Text className="text-foreground text-base font-medium ">{place.name}</Text>
           <Trap count={place.trapCount} />
         </TouchableOpacity>
       </Link>

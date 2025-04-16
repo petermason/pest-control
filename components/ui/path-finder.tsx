@@ -35,9 +35,13 @@ const PathFinder = React.forwardRef<React.ElementRef<typeof View>, PathFinderPro
         <View className='mt-4'>
           {paths.length > 0 ? (
             paths.map((path, index) => (
-              <Text key={index} className='text-sm text-muted-foreground'>
-                {path}
-              </Text>
+              <View key={index} className='flex-row mb-2'>
+                <Text className='text-sm text-muted-foreground'>*</Text>
+                <Text key={index} className='text-sm text-muted-foreground'>
+                  {path}
+                </Text>
+              </View>
+              
             ))
           ) : (
             <Text className='text-sm text-muted-foreground'>
