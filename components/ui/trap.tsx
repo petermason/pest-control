@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import { Rat } from '~/lib/icons/Rat';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 interface TrapProps {
   count?: number;

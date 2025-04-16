@@ -3,7 +3,7 @@ import { setAndroidNavigationBar } from '~/lib/android-navigation-bar';
 import { MoonStar } from '~/lib/icons/MoonStar';
 import { Sun } from '~/lib/icons/Sun';
 import { useColorScheme } from '~/lib/useColorScheme';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 export function ThemeToggle() {
   const { isDarkColorScheme, setColorScheme } = useColorScheme();

@@ -1,4 +1,4 @@
-import { Place } from "../types";
+import { Place } from "~/lib/utils/types";
 
 const places: Place[] = [
   {

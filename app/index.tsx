@@ -19,10 +19,17 @@ import { Trap } from '~/components/ui/trap';
 import { X } from '~/lib/icons/X';
 import { Place } from '~/components/ui/place';
 import logo from '~/assets/images/pest-control-logo.png';
-
+import { findHighActivityPaths } from '~/lib/utils/findHighActivityPaths';
+import { places } from '~/data';
+import { buildPlaceTree } from '~/lib/utils/buildPlaceTree';
 
 export default function Screen() {
   const [progress, setProgress] = React.useState(78);
+  const highActivityPaths = findHighActivityPaths(places, 3);
+  const tree = buildPlaceTree(places);
+
+  console.log("highActivityPaths", highActivityPaths);
+  console.log("tree", tree);
 
   function updateProgressValue() {
     setProgress(Math.floor(Math.random() * 100));

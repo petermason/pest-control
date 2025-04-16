@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import { Trap } from '~/components/ui/trap';
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils/cn';
 
 
 interface PlaceProps {
