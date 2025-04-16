@@ -1,19 +1,44 @@
 import { buildPlaceTree } from "./buildPlaceTree";
-import { Place } from "./types";
+import { PlaceWithChildren } from "./types";
 
-function findHighActivityPaths(places: Place[], trapThreshold: number): string[] {
-  const roots = buildPlaceTree(places);
+// ************************************************************************
+// Question 2:
+// Complete the function to find paths to locations with high trap activity
+// ************************************************************************
+
+/**
+ * Finds paths to locations with trap counts above the given threshold
+ * @param places - Array of place objects
+ * @param trapThreshold - Minimum number of traps to consider a place as high activity
+ * @returns An array of string paths to high activity locations
+ * 
+ * Example usage:
+ * const highActivityPaths = findHighActivityPaths(places, 3);
+ * console.log(highActivityPaths);
+ * Expected output:
+ * [
+ *   "Family House, First Floor, Kitchen",
+ *   "Family House, Second Floor, Main Bedroom, Main Bedroom Bathroom"
+ * ]
+ */
+
+
+function findHighActivityPaths(places: PlaceWithChildren[], trapThreshold: number): string[] {
+  // convert the flat structure into a tree
+  const tree = buildPlaceTree(places);
   const paths: string[] = [];
 
-  function traverse(place: Place, path: string[] = []) {
+  // recusive fn to find the children
+  function loop(place: PlaceWithChildren, path: string[] = []) {
     const newPath = [...path, place.name];
     if (place.traps_count >= trapThreshold) {
       paths.push(newPath.join(', '));
     }
-    place.children?.forEach(child => traverse(child, newPath));
+    // loop again if the place has children
+    place.children?.forEach(child => loop(child, newPath));
   }
 
-  roots.forEach(root => traverse(root));
+  tree.forEach(place => loop(place));
 
   return paths;
 }
